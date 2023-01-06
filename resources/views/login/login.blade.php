@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sistem Informasi Sekolah</title>
+    <title>LKP</title>
 
       <meta name="csrf-token" content="{{ csrf_token() }}">
       {{-- <link rel="stylesheet" href="{{asset('dist/plugins/fontawesome-free/css/all.min.css') }}"> --}}
@@ -28,8 +28,7 @@
 <div class="login-box">
   <div style="text-align:center;margin:30px 0">
 
-    {{-- <img src="{{url('/logo/pancabudi.png')}}" style="width:120px;height:120px" alt="" srcset="">&nbsp;&nbsp;&nbsp;&nbsp; --}}
-    <img src="{{url('/logo/logo_utama.png')}}" style="width:120px;height:120px" alt="" srcset="">
+    {{-- <img src="{{url('/logo/logo_utama.png')}}" style="width:120px;height:120px" alt="" srcset=""> --}}
   </div>
 
  <div class="card card-outline card-primary">
@@ -37,7 +36,7 @@
       <a  class="h1"><b>Selamat Datang</b></a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sistem Informasi Sekolah</p>
+      <p class="login-box-msg">LKP ADMIN</p>
 
     <form action="{{ url('/login/cek') }}" method="post">
         @csrf  

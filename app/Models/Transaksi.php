@@ -11,6 +11,6 @@ class Transaksi extends Model
     protected $table= "transaksi";
     public $timestamps = false;
     protected $fillable =[
-        'siswa_id',
+        'daftar_id',
     ];
 }

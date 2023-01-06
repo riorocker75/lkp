@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Hash;
 use File;
 use App\Models\User;
 use App\Models\Admin;
-use App\Models\Siswa;
-use App\Models\Nilai;
+
 use App\Models\Transaksi;
+use App\Models\Pelatihan;
+use App\Models\Jadwal;
+
+
 
 
 
@@ -416,6 +419,58 @@ function nilai_delete($id){
  }
 
 
+ function pelatihan(){
+    $data=Pelatihan::orderBy('id','desc')->get();
+    return view('admin.latih',[
+        'data'=>$data
+    ]);   
+ }
+
+ function pelatihan_act(Request $request){
+    $request->validate([
+        'nama' => 'required'
+    ]);
+
+     DB::table('pelatihan')->insert([
+     'nama' => $request->nama,
+     'harga' => $request->harga,
+     'status' => $request->status,
+  
+    ]);
+    return redirect('/dashboard/pelatihan/data')->with('alert-success','Data Berhasil disimpan');
+
+ }
+
+ function pelatihan_edit($id){
+    $data=Pelatihan::where('id',$id)->get();
+    $data_table=Pelatihan::orderBy('id','desc')->get();
+
+    return view('admin.latih_edit',[
+        'data_latih' =>$data,
+        'data' => $data_table
+    ]);  
+ }
+
+ function pelatihan_update(Request $request){
+    $request->validate([
+        'nama' => 'required'
+    ]);
+    $id=$request->id;
+     DB::table('pelatihan')->where('id',$id)->update([
+        'nama' => $request->nama,
+        'harga' => $request->harga,
+        'status' => $request->status,
+    
+    ]);
+    return redirect('/dashboard/pelatihan/data')->with('alert-success','Data Berhasil disimpan');
+
+ }
+
+ function pelatihan_delete($id){
+    Pelatihan::where('id',$id)->delete();
+    return redirect('/dashboard/pelatihan/data')->with('alert-success','Data telah terhapus');
+
+}
 
 
 

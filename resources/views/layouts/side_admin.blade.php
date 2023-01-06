@@ -75,33 +75,47 @@
                with font-awesome or any other icon font library -->
          
               <li class="nav-item">
-                <a href="{{url('/dashboard/siswa/data')}}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Siswa</p>
+                <a href="{{url('/dashboard/daftar/data')}}" class="nav-link ">
+                  <i class="far fa-user nav-icon"></i>
+                  <p>Data Pendaftar</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url('/dashboard/nilai/data')}}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Nilai</p>
+                <a href="{{url('/dashboard/pelatihan/data')}}" class="nav-link ">
+                  <i class="fa fa-book nav-icon"></i>
+                  <p>Data Pelatihan</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url('/dashboard/ambil/data')}}" class="nav-link ">
+                <a href="{{url('/dashboard/jadwal/data')}}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Pengambilan</p>
+                  <p>Data Jadwal</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{url('/dashboard/pembayaran/data')}}" class="nav-link ">
+                  <i class="fa fa-credit-card nav-icon"></i>
+                  <p>Pembayaran</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{url('/dashboard/transaksi/data')}}" class="nav-link ">
+                  <i class="fa fa-credit-card nav-icon"></i>
+                  <p>Transaksi</p>
                 </a>
               </li>
                
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                 <a href="{{url('/dashboard/role/data')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Role</p>
                 </a>
-              </li>
+              </li> --}}
  
        
 

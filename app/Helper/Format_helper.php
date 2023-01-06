@@ -401,3 +401,17 @@ function status_transfer($status){
             break;
             }
         }
+
+        function stat_latih($stat){
+            switch($stat){
+                case 1:
+                    echo "Aktif";
+                break;
+                case 2:
+                    echo "Non Aktif";
+                break;
+                default:
+                echo "Tidak ada status";
+            break;
+                }
+        }

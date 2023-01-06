@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 // controller admin route
 use App\Http\Controllers\AdminCtrl;
-use App\Http\Controllers\KapusCtrl;
 use App\Http\Controllers\LoginCtrl;
+use App\Http\Controllers\FrontCtrl;
 
 
 
@@ -25,13 +25,26 @@ use App\Http\Controllers\LoginCtrl;
 
 
 
-Route::get('/', [AdminCtrl::class,'index']);
+Route::get('/', [FrontCtrl::class,'index']);
 
 // Login
 Route::get('/login', [LoginCtrl::class,'index']);
 Route::post('/login/cek', [LoginCtrl::class,'cek_login']);
 
 Route::get('/logout', [LoginCtrl::class,'logout']);
+
+
+Route::get('/dashboard', [AdminCtrl::class,'index']);
+
+
+//data pelatihan
+Route::get('/dashboard/pelatihan/data', [AdminCtrl::class,'pelatihan']);
+Route::post('/dashboard/pelatihan/act', [AdminCtrl::class,'pelatihan_act']);
+Route::get('/dashboard/pelatihan/edit/{id}', [AdminCtrl::class,'pelatihan_edit']);
+Route::post('/dashboard/pelatihan/update', [AdminCtrl::class,'pelatihan_update']);
+
+
+Route::get('/dashboard/pelatihan/delete/{id}', [AdminCtrl::class,'pelatihan_delete']);
 
 
 

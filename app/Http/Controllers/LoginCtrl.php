@@ -36,7 +36,7 @@ class LoginCtrl extends Controller
                     Session::put('adm_username', $data->username);
                     Session::put('level', 1);
                     Session::put('login-adm',TRUE);
-                    return redirect('/')->with('alert-success','Selamat Datang Kembali Admin');
+                    return redirect('/dashboard')->with('alert-success','Selamat Datang Kembali Admin');
                 }else{
                     return redirect('/login')->with('alert-danger','Password atau Email, Salah !');
                 }
