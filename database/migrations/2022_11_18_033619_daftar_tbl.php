@@ -26,7 +26,9 @@ class DaftarTbl extends Migration
                 $table->text('jenis')->nullable();
                 $table->text('tempat')->nullable();
                 $table->text('file')->nullable();
-                
+                $table->text('user_id')->nullable();
+                $table->text('status')->nullable();
+
             });
         }
     }

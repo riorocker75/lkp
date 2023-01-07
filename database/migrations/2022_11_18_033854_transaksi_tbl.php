@@ -18,6 +18,9 @@ class TransaksiTbl extends Migration
                 $table->bigIncrements('id');
                 $table->text('daftar_id');
                 $table->text('pelatihan_id')->nullable();
+                $table->text('harga')->nullable();
+                $table->text('jenis')->nullable();
+                $table->text('tempat')->nullable();
                 $table->dateTime('tgl')->nullable();
                 $table->text('status_bayar')->nullable();
                 $table->text('status')->nullable();

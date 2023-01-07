@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminCtrl;
 use App\Http\Controllers\LoginCtrl;
 use App\Http\Controllers\FrontCtrl;
+use App\Http\Controllers\UserCtrl;
 
 
 
@@ -24,8 +25,14 @@ use App\Http\Controllers\FrontCtrl;
 
 
 
-
+// bagian front
 Route::get('/', [FrontCtrl::class,'index']);
+
+Route::post('/daftar/act', [FrontCtrl::class,'daftar_act']);
+
+
+
+
 
 // Login
 Route::get('/login', [LoginCtrl::class,'index']);
@@ -48,43 +55,39 @@ Route::get('/dashboard/pelatihan/delete/{id}', [AdminCtrl::class,'pelatihan_dele
 
 
 
-// data siswa
-Route::get('/dashboard/siswa/data', [AdminCtrl::class,'siswa']);
-Route::get('/dashboard/siswa/add', [AdminCtrl::class,'siswa_add']);
-Route::post('/dashboard/siswa/act', [AdminCtrl::class,'siswa_act']);
+// data jadwal
+Route::get('/dashboard/jadwal/data', [AdminCtrl::class,'jadwal']);
+Route::post('/dashboard/jadwal/act', [AdminCtrl::class,'jadwal_act']);
+Route::get('/dashboard/jadwal/edit/{id}', [AdminCtrl::class,'jadwal_edit']);
+Route::post('/dashboard/jadwal/update', [AdminCtrl::class,'jadwal_update']);
+Route::get('/dashboard/jadwal/delete/{id}', [AdminCtrl::class,'jadwal_delete']);
 
-Route::get('/dashboard/siswa/edit/{id}', [AdminCtrl::class,'siswa_edit']);
-Route::post('/dashboard/siswa/update', [AdminCtrl::class,'siswa_update']);
-Route::get('/dashboard/siswa/delete/{id}', [AdminCtrl::class,'siswa_delete']);
 
-// data nilai
-Route::get('/dashboard/nilai/data', [AdminCtrl::class,'nilai']);
-Route::get('/dashboard/nilai/add', [AdminCtrl::class,'nilai_add']);
-Route::post('/dashboard/nilai/act', [AdminCtrl::class,'nilai_act']);
 
-Route::get('/dashboard/nilai/edit/{id}', [AdminCtrl::class,'nilai_edit']);
-Route::post('/dashboard/nilai/update', [AdminCtrl::class,'nilai_update']);
-Route::get('/dashboard/nilai/delete/{id}', [AdminCtrl::class,'nilai_delete']);
+// data daftar
+Route::get('/dashboard/daftar/data', [AdminCtrl::class,'daftar']);
+Route::post('/dashboard/daftar/act', [AdminCtrl::class,'daftar_act']);
+Route::get('/dashboard/daftar/edit/{id}', [AdminCtrl::class,'daftar_edit']);
+Route::post('/dashboard/daftar/update', [AdminCtrl::class,'daftar_update']);
+Route::get('/dashboard/daftar/delete/{id}', [AdminCtrl::class,'daftar_delete']);
 
-// data ambil
 
-Route::get('/dashboard/ambil/data', [AdminCtrl::class,'ambil']);
-Route::get('/dashboard/ambil/add', [AdminCtrl::class,'ambil_add']);
-Route::post('/dashboard/ambil/act', [AdminCtrl::class,'ambil_act']);
-
-Route::get('/dashboard/ambil/edit/{id}', [AdminCtrl::class,'ambil_edit']);
-Route::post('/dashboard/ambil/update', [AdminCtrl::class,'ambil_update']);
-Route::get('/dashboard/ambil/delete/{id}', [AdminCtrl::class,'ambil_delete']);
-
-// bagian kepsek
-Route::get('/dashboard/kepsek', [KapusCtrl::class,'index']);
-Route::get('/dashboard/kepsek/siswa/data', [KapusCtrl::class,'siswa']);
-Route::get('/dashboard/kepsek/nilai/data', [KapusCtrl::class,'nilai']);
-Route::get('/dashboard/kepsek/nilai/cetak', [KapusCtrl::class,'cetak_nilai']);
 
 
 Route::get('/dashboard/kepsek/nilai/cetak/daftar_nilai/{id}', [KapusCtrl::class,'cetak_daftar_nilai']);
 Route::get('/dashboard/kepsek/nilai/cetak/ijazah/{id}', [KapusCtrl::class,'cetak_ijazah']);
+
+
+// bagian user
+
+Route::get('/user/daftar/data', [UserCtrl::class,'daftar']);
+Route::post('/user/daftar/act', [UserCtrl::class,'daftar_act']);
+Route::get('/user/daftar/edit/{id}', [UserCtrl::class,'daftar_edit']);
+Route::post('/user/daftar/update', [UserCtrl::class,'daftar_update']);
+
+Route::post('/user/daftar/bayar', [UserCtrl::class,'daftar_bayar']);
+
+
 
 
 

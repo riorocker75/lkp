@@ -17,6 +17,7 @@ use App\Models\Admin;
 use App\Models\Transaksi;
 use App\Models\Pelatihan;
 use App\Models\Jadwal;
+use App\Models\Daftar;
 
 
 
@@ -471,6 +472,77 @@ function nilai_delete($id){
     return redirect('/dashboard/pelatihan/data')->with('alert-success','Data telah terhapus');
 
 }
+
+
+
+// jadwal mulai
+
+function jadwal(){
+    $data=Jadwal::orderBy('id','desc')->get();
+    return view('admin.jadwal',[
+        'data'=>$data
+    ]);   
+ }
+
+ function jadwal_act(Request $request){
+    $request->validate([
+        'nama' => 'required'
+    ]);
+
+     DB::table('jadwal')->insert([
+     'nama' => $request->nama,
+     'pelatihan_id' => $request->pelatihan_id,
+     'kuota' => $request->kuota,
+     'jadwal_awal' => $request->jadwal_awal,
+     'jadwal_akhir' => $request->jadwal_akhir,
+     'status' => $request->status,
+  
+    ]);
+    return redirect('/dashboard/jadwal/data')->with('alert-success','Data Berhasil disimpan');
+
+ }
+
+ function jadwal_edit($id){
+    $data=Jadwal::orderBy('id','desc')->get();
+    $data_table=Jadwal::where('id',$id)->get();
+
+    return view('admin.jadwal_edit',[
+        'data' =>$data,
+        'data_jadwal' => $data_table
+    ]);  
+ }
+
+ function jadwal_update(Request $request){
+    $request->validate([
+        'nama' => 'required'
+    ]);
+    $id=$request->id;
+     DB::table('jadwal')->where('id',$id)->update([
+        'nama' => $request->nama,
+        'pelatihan_id' => $request->pelatihan_id,
+        'kuota' => $request->kuota,
+        'jadwal_awal' => $request->jadwal_awal,
+        'jadwal_akhir' => $request->jadwal_akhir,
+        'status' => $request->status,
+    
+    ]);
+    return redirect('/dashboard/jadwal/data')->with('alert-success','Data Berhasil disimpan');
+
+ }
+
+
+ function jadwal_delete($id){
+    Jadwal::where('id',$id)->delete();
+    return redirect('/dashboard/jadwal/data')->with('alert-success','Data telah terhapus');
+
+}
+ 
+
+
+//  akhir jadwal
+
+
+
 
 
 
