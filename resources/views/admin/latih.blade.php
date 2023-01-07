@@ -42,7 +42,7 @@
                      <div class="form-group">
                             <label>Nama Pelatihan</label>
                             <input type="text" class="form-control" name="nama">
-                    </div>
+                      </div>
 
                       <div class="form-group">
                             <label>Harga</label>    

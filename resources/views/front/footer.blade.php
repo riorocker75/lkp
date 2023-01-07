@@ -11,14 +11,102 @@
                     </button>
                 </div>
 
-                <div class="modal-body">
-                           
-                </div>
+                <form action="{{url('/daftar/act')}}" method="post">
+                    @csrf  
+                    @method('POST')
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Daftar</button>
-                </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Instansi</label>
+                            <input type="text" class="form-control" name="nama" required>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Alamat Instansi</label>
+                            <input type="text" class="form-control" name="alamat" required>
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Email Instansi</label>
+                            <input type="text" class="form-control" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Nomor Telp. Instansi</label>
+                            <input type="text" class="form-control" name="no_hp" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Deskripsi Instansi</label>
+                            <input type="text" class="form-control" name="deskripsi">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Website Instansi</label>
+                            <input type="text" class="form-control" name="website" >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Bidang Pelatihan</label>
+                            <select class="form-control select2" style="width: 100%;" name="pelatihan_id" required>
+                                @php
+                                    $latih = App\Models\Pelatihan::orderBy('id','desc')->get();
+                                @endphp
+                                    <option selected value="">-- Pilih Pelatihan --</option>
+                                @foreach ($latih as $lt)
+                                    <option  value="{{$lt->id}}">{{$lt->nama}}</option>
+                                @endforeach
+
+                            </select>
+                         </div>
+
+                         <div class="form-group">
+                            <label>Jenis Pelatihan</label>
+                            <select class="form-control select2" style="width: 100%;" name="jenis" required>
+                                <option selected value="">-- Pilih Jenis --</option>
+                                <option  value="1">Daring (Tatap Muka Virtual)</option>
+                                <option  value="2">Luring (Tatap Muka Langsung)</option>
+
+                            </select>
+                         </div>
+
+                         <div class="form-group">
+                            <label>Tempat Pelatihan</label>
+                            <select class="form-control select2" style="width: 100%;" name="tempat" required>
+                                <option selected value="">-- Pilih Tempat --</option>
+                                <option  value="1">LKP Langkat</option>
+                                <option  value="2">In House Training</option>
+                            </select>
+                         </div>
+
+                         <div class="form-group">
+                            <label>File Pendukung</label> <br>
+                            <input type="file" name="file" required>
+                            <br>
+                            <span style="font-size:12px;color:#000">Ijazah, CV, Rekomendasi Atasan, Fotocopy pendukung lainya </span>
+                            <br>
+                            <span style="font-size:10px;color:red">*format yang diterima pdf</span>
+                         </div>
+
+                         <div style="width:100%;border:1px solid #000;"></div>
+
+                         <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Daftar</button>
+                    </div>
+            </form>       
             </div>
     </form>
     </div>

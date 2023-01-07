@@ -44,7 +44,6 @@
                         <div class="form-group">
                                 <label>Nama Pelatihan</label>
                                 <input type="hidden" class="form-control" name="id" value="{{$item->id}}" required>
-
                                 <input type="text" class="form-control" name="nama" value="{{$item->nama}}" required>
                         </div>
 

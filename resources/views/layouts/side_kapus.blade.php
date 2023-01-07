@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('/dashboard/kepsek')}}" class="nav-link">Home</a>
+        <a href="{{url('/user')}}" class="nav-link">Home</a>
       </li>
       
     </ul>
@@ -43,7 +43,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{url('/dashboard/kepsek')}}" class="brand-link">
+    <a href="{{url('/user')}}" class="brand-link">
       {{-- <img src="{{url('/')}}/logo/logoAs.png" alt="Simeulue Tengah" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
       <span class="brand-text font-weight-light">Sekolah</span>
     </a>
@@ -76,10 +76,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-            <a href="{{url('/dashboard/kepsek/siswa/data')}}" class="nav-link">
+            <a href="{{url('/user/histori/data')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Siswa
+                History Daftar
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
@@ -88,29 +88,13 @@
           
 
 
-              <li class="nav-item">
-            <a href="{{url('/dashboard/kepsek/nilai/data')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Nilai
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-{{-- 
-            <li class="nav-item">
-            <a href="{{url('/kapus/poli')}}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Poli
-              </p>
-            </a>
-          </li> --}}
+              
+
 
           
 
            <li class="nav-item">
-                <a href="{{url('/kapus/pengaturan/data')}}" class="nav-link ">
+                <a href="{{url('/user/pengaturan/data')}}" class="nav-link ">
                  <i class="fa fa-lock nav-icon" aria-hidden="true"></i>
                   <p> Ganti Password</p>
                 </a>

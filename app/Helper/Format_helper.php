@@ -415,3 +415,31 @@ function status_transfer($status){
             break;
                 }
         }
+
+        function jenis_latih($stat){
+            switch($stat){
+                case 1:
+                    echo "Daring (Tatap Muka Virtual)";
+                    break;
+                case 2:
+                    echo "Luring (Tatap Muka Langsung)";
+                    break;
+                 default:
+                    echo "tidak ditemukan";
+                    break;   
+            }
+        }
+
+        function tempat_latih($stat){
+            switch($stat){
+                case 1:
+                    echo "LKP Langkat";
+                    break;
+                case 2:
+                    echo "In House Training";
+                    break;
+                 default:
+                    echo "tidak ditemukan";
+                    break;   
+            }
+        }

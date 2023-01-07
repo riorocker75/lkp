@@ -80,12 +80,16 @@ Route::get('/dashboard/kepsek/nilai/cetak/ijazah/{id}', [KapusCtrl::class,'cetak
 
 // bagian user
 
+Route::get('/user', [UserCtrl::class,'index']);
+
+
+
 Route::get('/user/daftar/data', [UserCtrl::class,'daftar']);
 Route::post('/user/daftar/act', [UserCtrl::class,'daftar_act']);
 Route::get('/user/daftar/edit/{id}', [UserCtrl::class,'daftar_edit']);
 Route::post('/user/daftar/update', [UserCtrl::class,'daftar_update']);
 
-Route::post('/user/daftar/bayar', [UserCtrl::class,'daftar_bayar']);
+Route::post('/user/bayar/act', [UserCtrl::class,'bayar_act']);
 
 
 
