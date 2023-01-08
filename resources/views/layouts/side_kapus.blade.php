@@ -43,9 +43,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{url('/user')}}" class="brand-link">
+    <a href="{{url('/dashboard/user')}}" class="brand-link">
       {{-- <img src="{{url('/')}}/logo/logoAs.png" alt="Simeulue Tengah" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">Sekolah</span>
+      <span class="brand-text font-weight-light">LKP</span>
     </a>
 
     <!-- Sidebar -->
@@ -75,15 +75,15 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="{{url('/user/histori/data')}}" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 History Daftar
-                {{-- <span class="right badge badge-danger">New</span> --}}
+              
               </p>
             </a>
-          </li>
+          </li> --}}
 
           
 
@@ -94,7 +94,7 @@
           
 
            <li class="nav-item">
-                <a href="{{url('/user/pengaturan/data')}}" class="nav-link ">
+                <a href="{{url('/dashboard/user/pengaturan/data')}}" class="nav-link ">
                  <i class="fa fa-lock nav-icon" aria-hidden="true"></i>
                   <p> Ganti Password</p>
                 </a>

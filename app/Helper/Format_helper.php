@@ -443,3 +443,36 @@ function status_transfer($status){
                     break;   
             }
         }
+
+        function stat_daftar($stat){
+            switch($stat){
+                case 0:
+                    echo "Non aktif";
+                    break;
+                case 1:
+                    echo "Aktif";
+                    break;
+                 default:
+                    echo "tidak ditemukan";
+                    break;   
+            }
+        }
+
+        function stat_bayar($stat){
+            switch($stat){
+                case 0:
+                    echo "<label class='badge badge-warning'>Menunggu Konfirmasi</label>";
+                    break;
+                case 1:
+                    echo "<label class='badge badge-success'>Telah Bayar (LUNAS)</label>";
+                    break;
+                    case 2:
+                        echo "<label class='badge badge-danger'>Pembayaran Ditolak</label>";
+                        break;
+                 default:
+                    echo "tidak ditemukan";
+                    break;   
+            }
+        }
+
+        

@@ -18,6 +18,7 @@ class DaftarTbl extends Migration
                 $table->bigIncrements('id');
                 $table->text('nama');
                 $table->text('alamat')->nullable();
+                $table->text('invoice')->nullable();
                 $table->text('email')->nullable();
                 $table->text('no_hp')->nullable();
                 $table->text('deskripsi')->nullable();
@@ -26,6 +27,7 @@ class DaftarTbl extends Migration
                 $table->text('jenis')->nullable();
                 $table->text('tempat')->nullable();
                 $table->text('file')->nullable();
+                $table->dateTime('tanggal')->nullable();
                 $table->text('user_id')->nullable();
                 $table->text('status')->nullable();
 

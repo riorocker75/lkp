@@ -72,7 +72,21 @@ Route::post('/dashboard/daftar/update', [AdminCtrl::class,'daftar_update']);
 Route::get('/dashboard/daftar/delete/{id}', [AdminCtrl::class,'daftar_delete']);
 
 
+// data bayar
+Route::get('/dashboard/bayar/data', [AdminCtrl::class,'bayar']);
+Route::post('/dashboard/bayar/update', [AdminCtrl::class,'bayar_update']);
+Route::get('/dashboard/bayar/edit/{id}', [AdminCtrl::class,'bayar_edit']);
 
+Route::get('/dashboard/bayar/delete/{id}', [AdminCtrl::class,'bayar_delete']);
+
+
+// end bayar
+
+// data transaksi
+Route::get('/dashboard/transaksi/data', [AdminCtrl::class,'transaksi']);
+Route::get('/dashboard/transaksi/delete/{id}', [AdminCtrl::class,'transaksi_delete']);
+
+// end transaksi
 
 Route::get('/dashboard/kepsek/nilai/cetak/daftar_nilai/{id}', [KapusCtrl::class,'cetak_daftar_nilai']);
 Route::get('/dashboard/kepsek/nilai/cetak/ijazah/{id}', [KapusCtrl::class,'cetak_ijazah']);
@@ -80,16 +94,16 @@ Route::get('/dashboard/kepsek/nilai/cetak/ijazah/{id}', [KapusCtrl::class,'cetak
 
 // bagian user
 
-Route::get('/user', [UserCtrl::class,'index']);
+Route::get('/dashboard/user', [UserCtrl::class,'index']);
 
 
 
-Route::get('/user/daftar/data', [UserCtrl::class,'daftar']);
-Route::post('/user/daftar/act', [UserCtrl::class,'daftar_act']);
-Route::get('/user/daftar/edit/{id}', [UserCtrl::class,'daftar_edit']);
-Route::post('/user/daftar/update', [UserCtrl::class,'daftar_update']);
+Route::get('/dashboard/user/daftar/data', [UserCtrl::class,'daftar']);
+Route::post('/dashboard/user/daftar/act', [UserCtrl::class,'daftar_act']);
+Route::get('/dashboard/user/daftar/edit/{id}', [UserCtrl::class,'daftar_edit']);
+Route::post('/dashboard/user/upload/bukti', [UserCtrl::class,'bukti_act']);
 
-Route::post('/user/bayar/act', [UserCtrl::class,'bayar_act']);
+Route::post('/dashboard/user/bayar/act', [UserCtrl::class,'bayar_act']);
 
 
 
@@ -110,7 +124,7 @@ Route::get('/dashboard/pengaturan/data', [AdminCtrl::class,'pengaturan']);
 Route::post('/dashboard/pengaturan/update', [AdminCtrl::class,'pengaturan_update']);
 
 
-Route::get('/kepsek/pengaturan/data', [KapusCtrl::class,'pengaturan']);
-Route::post('/kepsek/pengaturan/update', [KapusCtrl::class,'pengaturan_update']);
+Route::get('/dashboard/user/pengaturan/data', [UserCtrl::class,'pengaturan']);
+Route::post('/dashboard/user/pengaturan/update', [UserCtrl::class,'pengaturan_update']);
 
 

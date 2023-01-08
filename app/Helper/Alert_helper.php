@@ -169,12 +169,8 @@
                  break;
 
                case 2:
-                echo "Kepala Sekolah";
+                echo "Peserta";
                  break;    
-                 case 3:
-                    echo "Dokter";
-                     break; 
-           
              default:
                 echo "tidak ada";
                  break;

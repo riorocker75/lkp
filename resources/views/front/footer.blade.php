@@ -2,7 +2,9 @@
 <!-- Modal -->
 <div class="modal fade" id="modalDaftar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="" method="post" enctype='multipart/form-data'>
+        <form action="{{url('/daftar/act')}}" method="post" enctype='multipart/form-data'>
+            @csrf  
+            @method('POST')
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Daftar Pelatihan</h5>
@@ -11,9 +13,7 @@
                     </button>
                 </div>
 
-                <form action="{{url('/daftar/act')}}" method="post">
-                    @csrf  
-                    @method('POST')
+                 
 
                     <div class="modal-body">
                         <div class="form-group">
@@ -28,7 +28,7 @@
 
                         <div class="form-group">
                             <label>Email Instansi</label>
-                            <input type="text" class="form-control" name="email" required>
+                            <input type="email" class="form-control" name="email" required>
                         </div>
                         
                         <div class="form-group">
@@ -106,7 +106,6 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Daftar</button>
                     </div>
-            </form>       
             </div>
     </form>
     </div>

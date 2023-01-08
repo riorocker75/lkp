@@ -96,10 +96,17 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{url('/dashboard/pembayaran/data')}}" class="nav-link ">
+                <a href="{{url('/dashboard/bayar/data')}}" class="nav-link ">
                   <i class="fa fa-credit-card nav-icon"></i>
-                  <p>Pembayaran</p>
+                  <p>Pembayaran </p>
+                  @php
+                      $tr=App\Models\Transaksi::where('status',0)->count();
+                  @endphp
+                  @if ($tr > 0)
+                    <span class="right badge badge-danger">{{$tr}}</span>
+                  @endif
                 </a>
+
               </li>
 
               <li class="nav-item">

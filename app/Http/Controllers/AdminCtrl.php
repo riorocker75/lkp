@@ -55,75 +55,7 @@ class AdminCtrl extends Controller
 
    
 
-    function ambil(){
-        $data= Transaksi::orderBy('id','desc')->get();
-        return view('admin.ambil_data',[
-            'data' =>$data
-        ]);
-    }
-
-    function ambil_add(){
-        return view('admin.ambil_add');
-    }
-
-    function ambil_act(Request $request){
-        $request->validate([
-			'bukti' => 'required|mimes:jpeg,png,jpg,pdf|max:2048'
-        ]);
-
-        $kode_by= "TRFP-".rand(1000,9999);
-        $bukti_bayar =$request->file('bukti');
-        $nf_bukti_bayar = rand(10000,99999)."_".rand(1000,9999).".".$bukti_bayar->getClientOriginalExtension();
-        $tujuan_upload = 'upload';
-
-        $bukti_bayar->move($tujuan_upload,$nf_bukti_bayar);
-
-        Transaksi::insert([
-            'siswa_id' =>$request->siswa,
-            'bukti' =>$nf_bukti_bayar,
-            'tanggal'=> date('Y-m-d'),
-            'status' => 1 
-        ]);
-
-        return redirect('/dashboard/ambil/data')->with('alert-success','data telah berhasil ditambahkan');
-
-    }
-
-    function ambil_edit($id){
-        $data = Transaksi::where('id',$id)->get();
-        return view('admin.ambil_edit',[
-            'data' =>$data
-        ]);
-    }
-
-    function ambil_update(Request $request){
-            $request->validate([
-                'bukti' => 'required|file|image|mimes:jpeg,png,jpg,pdf|max:2048'
-            ]);
     
-            $kode_by= "TRFP-".rand(1000,9999);
-            $bukti_bayar =$request->file('bukti');
-            $nf_bukti_bayar = rand(10000,99999)."_".rand(1000,9999).".".$bukti_bayar->getClientOriginalExtension();
-            $tujuan_upload = 'upload';
-    
-            $bukti_bayar->move($tujuan_upload,$nf_bukti_bayar);
-            $id=$request->id;
-            Transaksi::where('id',$id)->update([
-                'bukti' =>$nf_bukti_bayar,
-            ]);
-    
-            return redirect('/dashboard/ambil/data')->with('alert-success','data telah berhasil ditambahkan');
-    
-    }
-
-    function ambil_delete($id){
-        $bukti=Transaksi::where('id',$id)->first();
-        File::delete('upload'.$bukti->bukti);
-        Transaksi::where('id',$id)->delete();
-        return redirect('/dashboard/ambil/data')->with('alert-success','data telah berhasil ditambahkan');
-
-    }
-
 
 
 
@@ -214,6 +146,91 @@ class AdminCtrl extends Controller
 
  }
 
+
+// daftar mulai
+
+function daftar(){
+    $data =Daftar::orderBy('id','desc')->get();
+
+    return view('admin.daftar_data',[
+        'data' => $data
+    ]);
+
+}
+
+function daftar_edit($id){
+    $data =Daftar::where('id',$id)->get();
+    return view('admin.daftar_edit',[
+        'data' => $data
+    ]);
+    
+}
+
+function daftar_update(Request $request){
+    $request->validate([
+        'file' => 'mimes:jpeg,png,jpg,pdf|max:5048',
+        'nama' => 'required'
+    ]);
+    $id=$request->id;
+
+    $file =$request->file('file');
+
+
+    if(empty($file)){
+        Daftar::where('id',$id)->update([
+            'nama' =>$request->nama,
+            'alamat' =>$request->alamat,
+            'email' =>$request->email,
+            'no_hp' =>$request->no_hp,
+            'deskripsi' =>$request->deskripsi,
+            'website' =>$request->website,
+            'pelatihan_id' =>$request->pelatihan_id,
+            'jenis' =>$request->jenis,
+            'tempat' =>$request->tempat,
+        ]);
+        return redirect('/dashboard/daftar/data')->with('alert-success','Data berubah');
+
+    }else{
+        $nf_file = rand(10000,99999)."_".rand(1000,9999).".".$file->getClientOriginalExtension();
+        $tujuan_upload = 'upload';
+    
+        $file->move($tujuan_upload,$nf_file);
+        Daftar::where('id',$id)->update([
+            'nama' =>$request->nama,
+            'alamat' =>$request->alamat,
+            'email' =>$request->email,
+            'no_hp' =>$request->no_hp,
+            'deskripsi' =>$request->deskripsi,
+            'website' =>$request->website,
+            'pelatihan_id' =>$request->pelatihan_id,
+            'jenis' =>$request->jenis,
+            'tempat' =>$request->tempat,
+            'file' =>$nf_file,
+        ]);
+        return redirect('/dashboard/daftar/data')->with('alert-success','Data berubah');
+
+    }
+
+
+}
+
+function daftar_delete($id){
+    $daftar=Daftar::where('id',$id)->first();
+    
+    $bukti=Transaksi::where('invoice',$daftar->invoice)->first();
+    File::delete('upload'.$bukti->bukti);
+    Transaksi::where('id',$bukti->id)->delete();
+
+    Daftar::where('id',$id)->delete();
+    File::delete('upload'.$daftar->file);
+
+
+    return redirect('/dashboard/daftar/data')->with('alert-success','data telah berhasil dihapus');
+
+}
+
+
+//  pelatihan mulai
 
  function pelatihan(){
     $data=Pelatihan::orderBy('id','desc')->get();
@@ -331,11 +348,99 @@ function jadwal(){
     return redirect('/dashboard/jadwal/data')->with('alert-success','Data telah terhapus');
 
 }
- 
-
 
 //  akhir jadwal
 
+
+// bayar mulai
+    function bayar(){
+        $data= Transaksi::where('status_bayar',0)->orderBy('id','desc')->get();
+        return view('admin.bayar_data',[
+            'data' =>$data
+        ]);
+
+    }
+
+
+
+    function bayar_edit($id){
+        $data= Transaksi::where('id',$id)->get();
+        return view('admin.bayar_edit',[
+            'data' =>$data
+        ]);
+    }
+
+    function bayar_update(Request $request){
+        $request->validate([
+			'id' => 'required',
+        ]);
+        $id=$request->id;
+
+        $tr= Transaksi::where('id',$id)->first();
+        $daftar= Daftar::where('id',$tr->daftar_id)->first();
+
+        if($request->status == "accept"){
+            
+            Daftar::where('id',$daftar->id)->update([
+                'status' => 1
+            ]);
+
+            Transaksi::where('id',$id)->update([
+                'status_bayar' => 1,
+                'status' => 1,
+            ]);
+            return redirect('/dashboard/bayar/data')->with('alert-success','Data telah diupdate');
+
+
+        }elseif($request->status == "reject"){
+            Daftar::where('id',$daftar->id)->update([
+                'status' => 2
+            ]);
+
+            Transaksi::where('id',$id)->update([
+                'status_bayar' => 2,
+                'status' => 2,
+            ]);
+            return redirect('/dashboard/bayar/data')->with('alert-success','Data telah diupdate');
+
+        }
+
+    }
+
+    
+function bayar_delete($id){
+    
+    $bukti=Transaksi::where('id',$id)->first();
+    File::delete('upload'.$bukti->bukti);
+    Transaksi::where('id',$bukti->id)->delete();
+
+    return redirect('/dashboard/bayar/data')->with('alert-success','data telah berhasil dihapus');
+}
+
+
+// end bayar
+
+
+// start transaksi
+function transaksi(){
+    $data= Transaksi::orderBy('id','desc')->get();
+    return view('admin.transaksi_data',[
+        'data' =>$data
+    ]);
+
+}
+
+function transaksi_delete($id){
+    
+    $bukti=Transaksi::where('id',$id)->first();
+    File::delete('upload'.$bukti->bukti);
+    Transaksi::where('id',$bukti->id)->delete();
+
+    return redirect('/dashboard/transaksi/data')->with('alert-success','data telah berhasil dihapus');
+}
+
+
+// end transaksi
 
 
 

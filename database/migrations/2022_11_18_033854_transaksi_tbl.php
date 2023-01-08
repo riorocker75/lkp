@@ -17,6 +17,7 @@ class TransaksiTbl extends Migration
             Schema::create('transaksi', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->text('daftar_id');
+                $table->text('invoice');
                 $table->text('pelatihan_id')->nullable();
                 $table->text('harga')->nullable();
                 $table->text('jenis')->nullable();
@@ -24,6 +25,7 @@ class TransaksiTbl extends Migration
                 $table->dateTime('tgl')->nullable();
                 $table->text('status_bayar')->nullable();
                 $table->text('status')->nullable();
+                $table->text('bukti')->nullable();
 
             }); 
         }

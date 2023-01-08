@@ -45,9 +45,10 @@ class LoginCtrl extends Controller
                 
                 if(Hash::check($password,$data->password)){
                     Session::put('kp_username', $data->username);
+                    Session::put('user_id', $data->id);
                     Session::put('level', 2);
                     Session::put('login-kp',TRUE);
-                    return redirect('/dashboard/kepsek')->with('alert-success','Selamat Datang Kembali');
+                    return redirect('/dashboard/user')->with('alert-success','Selamat Datang Kembali');
                 }else{
                     return redirect('/login')->with('alert-danger','Password atau Email, Salah !');
                 }
