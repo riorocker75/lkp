@@ -98,7 +98,7 @@
 <body onload="window.print();">
 	<div class="wrapper">
 		<div class="container">
-<div class="kop_surat">
+{{-- <div class="kop_surat">
             <div class="logo_surat">
                 <img src="{{url('/')}}/logo/logoAs.png" alt="" srcset="">
             </div>
@@ -114,42 +114,40 @@
               
                <p style="font-size:12px;font-weight:400">Jln.Tengkuh di ujung kp.Aie Kode Pos 23894</p>
             </div>
-        </div>
+        </div> --}}
 
    <div style="text-align:center;margin-top:30px">
-        <h5> Rekapan Kunjungan Pasien Pertahun </h5>
+    <h5>LKP JAVA COM LANGKAT</h5>
+        <h5> Rekapan Transaksi </h5>
 			<h5>{{date('Y')}}</h5>
    </div>
    <table id="absensi" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Pasien</th>
-                <th>Keluhan</th>
-                <th>Poli</th>
-                <th>Dokter</th>
+                <th>Instansi</th>
+                <th>Pelatihan</th>
+                <th>Invoice</th>
+                <th>Nominal</th>
                 <th>Tanggal</th>
-
             </tr>
         </thead>
         <tbody>
 			   <?php $no=1; ?>
 			@foreach ($data as $dt)
 			   @php
-                   $pasien=App\Models\Pasien::where('id',$dt->id_pasien)->first();
-                   $dokter=App\Models\Dokter::where('id',$dt->id_dokter)->first();
-                   $poli=App\Models\Poli::where('id',$dt->id_poli)->first();
+                   $user=App\Models\Daftar::where('id',$dt->daftar_id)->first();
+                   $pelatihan=App\Models\Pelatihan::where('id',$dt->pelatihan_id)->first();
                 @endphp
             <tr>
 					
                 <td>{{$no++}}</td>
-				<td>{{$pasien->nama}} <br>{{$pasien->nik}}</td>
-				<td>{{$dt->diagnosa}} </td>
-				<td>{{$poli->prosedur}} </td>
-				<td>{{$dokter->nama}} </td>
+				<td>{{$user->nama}} <br><span style="font-size:10px">Email:{{$user->email}}</span></td>
+				<td>{{$pelatihan->nama}} </td>
+				<td>{{$dt->invoice}} </td>
+				<td>Rp.{{number_format($dt->harga)}} </td>
+				<td>{{format_tanggal(date('Y-m-d',strtotime($dt->tgl)))}} </td>
 
-				<td>{{format_tanggal(date('Y-m-d',strtotime($dt->tanggal)))}} </td>
-			
             </tr>  
 			@endforeach
         </tbody>   

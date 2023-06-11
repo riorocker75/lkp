@@ -442,6 +442,30 @@ function transaksi_delete($id){
 
 // end transaksi
 
+function cetak_transaksi(Request $request){
+    $dari =$request->dari;
+    $sampai =$request->sampai;  
+
+    $fdari=format_tanggal(date('Y-m-d',strtotime($dari)));
+    $fsampai=format_tanggal(date('Y-m-d',strtotime($sampai)));
+
+    $cek_data=DB::table('transaksi')
+            ->where('status',1)
+            ->whereBetween('tgl', [$dari, $sampai])
+            ->orderBy('tgl','desc')
+            ->get();
+
+    if(count($cek_data) < 1){
+         return redirect()->back();
+    }
+            
+    return view('cetak.cetak_transaksi',[
+        'data' =>$cek_data,
+        'dari' => $fdari,
+        'sampai' => $fsampai,
+    ]);
+
+}
 
 
 

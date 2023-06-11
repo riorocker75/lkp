@@ -87,9 +87,7 @@ Route::get('/dashboard/transaksi/data', [AdminCtrl::class,'transaksi']);
 Route::get('/dashboard/transaksi/delete/{id}', [AdminCtrl::class,'transaksi_delete']);
 
 // end transaksi
-
-Route::get('/dashboard/kepsek/nilai/cetak/daftar_nilai/{id}', [KapusCtrl::class,'cetak_daftar_nilai']);
-Route::get('/dashboard/kepsek/nilai/cetak/ijazah/{id}', [KapusCtrl::class,'cetak_ijazah']);
+Route::post('/dashboard/cetak/transaksi', [AdminCtrl::class,'cetak_transaksi']);
 
 
 // bagian user
