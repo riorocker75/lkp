@@ -20,6 +20,7 @@
 
 
     <style type="text/css">
+      
 			.lead {
 				font-family: "Verdana";
 				font-weight: bold;
@@ -39,7 +40,7 @@
 			/* @page { size: with x height */
 			/*@page { size: 20cm 10cm; margin: 0px; }*/
 			@page {
-				size: A4;
+                size: auto;
 				margin : 0px;
 			}
 	/*		@media print {

@@ -39,7 +39,7 @@
 			/* @page { size: with x height */
 			/*@page { size: 20cm 10cm; margin: 0px; }*/
 			@page {
-				size: A4;
+				size: auto;
 				margin : 0px;
 			}
 	/*		@media print {
@@ -95,17 +95,19 @@
 }
 	</style>
 </head>
-<body onload="window.print();">
-    {{-- <body> --}}
+{{-- <body onload="window.print();"> --}}
+    <body>
 	<div class="wrapper">
 		<div class="container">
-            <div style="position:relative;right:-622px">
+		<div style="margin-top:800px;margin-left:665px;margin-right:665px;">
+    
+            {{-- <div style="position:relative;right:-622px">
                 <p >Swasta</p>
 
-            </div>
+            </div> --}}
         <div style="position:relative;left:140px;width:600px;margin-top:40px;margin-bottom:80px">
             <div style="margin-top:50px;margin-right:300px;">
-                <p style="text-transform:uppercase">MA'HAD MUHAMMAD SAMAN</p>
+                <p style="text-transform:uppercase">MA'HAD MUHAMMAD SAMANsssss</p>
             </div>
             <div style="margin-left:150px">
                  <p style="text-transform:uppercase">10262125</p>
@@ -179,6 +181,7 @@
             </div>
 
             
+		</div>
 
 		</div>
 	</div>

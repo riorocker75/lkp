@@ -39,7 +39,7 @@
 			/* @page { size: with x height */
 			/*@page { size: 20cm 10cm; margin: 0px; }*/
 			@page {
-				size: A2;
+				size: auto;
 				margin : 0px;
 			}
 	/*		@media print {
